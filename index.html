@@ -23,39 +23,21 @@
 <body>
 
 <ul id="menu">
-    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First slide</a></li>
-    <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
-    <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Income</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">Age</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage">Education</a></li>
 </ul>
 
 <div id="fullpage">
     <div class="section " id="section0">
         <h1>Obesity(%) by Income</h1>
     </div>
-    <div class="section active" id="section1">
-        <div class="slide" id="slide1">
-            <div class="intro">
-                <h1>Slide 2.1</h1>
-                <iframe data-src="auto-height.html"></iframe>
-            </div>
-        </div>
-        <div class="slide active" id="slide2">
-            <div class="intro">
-                <h1>Slide 2.2</h1>
-                <p>
-                    We are using the class `active` on this section and in this particular horizontal slide. This way it will appear on the viewport on page load, instead of the 1st section 1st slide.
-                </p>
-                <p>You can apply the same logic to horizontal slides</p>
-            </div>
-        </div>
-        <div class="slide" id="slide3">
-            <h1>Slide 2.3</h1>
-        </div>
-
+    <div class="section " id="section1">
+        <h1>Obesity(%) by Age</h1>
     </div>
     <div class="section" id="section2">
         <div class="intro">
-            <h1>Section 3</h1>
+            <h1>Obesity(%) by Education</h1>
         </div>
     </div>
 </div>
@@ -66,11 +48,11 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 500 - margin.left - margin.right,
+    height = 650 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#section0")
+///////////////////////////////////////////////////////////////////////////// graph1
+var svg_graph1 = d3.select("#section0")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -86,7 +68,7 @@ var x = d3.scaleBand()
   .range([ 0, width ])
   .domain(data.map(function(d) { return d.Income; }))
   .padding(0.2);
-svg.append("g")
+  svg_graph1.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -97,11 +79,11 @@ svg.append("g")
 var y = d3.scaleLinear()
   .domain([0, 100])
   .range([ height, 0]);
-svg.append("g")
+  svg_graph1.append("g")
   .call(d3.axisLeft(y));
 
 // Bars
-svg.selectAll("mybar")
+svg_graph1.selectAll("mybar")
   .data(data)
   .enter()
   .append("rect")
@@ -112,11 +94,108 @@ svg.selectAll("mybar")
     .attr("fill", "#7f3131")
     .append("title")
         .text(function(d){
-            return d.Income + " : " + d.Value + "%";
+            return "Income " + d.Income + " : " + d.Value + "%";
+        });
+
+})
+
+
+//////////////////////////////////////////////////////////////////////////// graph2
+var svg_graph2 = d3.select("#section1")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.csv("https://samanake.github.io/obesity_2018_age.csv", function(data) {
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data.map(function(d) { return d.Age; }))
+  .padding(0.2);
+  svg_graph2.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 100])
+  .range([ height, 0]);
+  svg_graph2.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg_graph2.selectAll("mybar")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.Age); })
+    .attr("y", function(d) { return y(d.Value); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.Value); })
+    .attr("fill", "#7f3131")
+    .append("title")
+        .text(function(d){
+            return "Ages " + d.Age + " : " + d.Value + "%";
         });
 
 })
     
+//////////////////////////////////////////////////////////////////////////// graph3
+var svg_graph3 = d3.select("#section2")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.csv("https://samanake.github.io/obesity_2018_education.csv", function(data) {
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data.map(function(d) { return d.Education; }))
+  .padding(0.2);
+  svg_graph3.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+  .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 100])
+  .range([ height, 0]);
+  svg_graph3.append("g")
+  .call(d3.axisLeft(y));
+
+// Bars
+svg_graph3.selectAll("mybar")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("x", function(d) { return x(d.Education); })
+    .attr("y", function(d) { return y(d.Value); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.Value); })
+    .attr("fill", "#7f3131")
+    .append("title")
+        .text(function(d){
+            return d.Education + " : " + d.Value + "%";
+        });
+
+})
+
       //d3.csv("https://samanake.github.io/obesity_2018_income.csv";
 </script>
 
