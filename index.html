@@ -109,7 +109,11 @@ svg.selectAll("mybar")
     .attr("y", function(d) { return y(d.Value); })
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Value); })
-    .attr("fill", "#69b3a2")
+    .attr("fill", "#7f3131")
+    .append("title")
+        .text(function(d){
+            return d.Income + " : " + d.Value + "%";
+        });
 
 })
     
@@ -119,7 +123,7 @@ svg.selectAll("mybar")
 <script type="text/javascript" src="dist/fullpage.js"></script>
 <script type="text/javascript">
     var myFullpage = new fullpage('#fullpage', {
-        sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+        sectionsColor: ['#949494', '#949494', '#949494'],
         anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
         menu: '#menu',
         lazyLoad: true
