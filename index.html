@@ -23,20 +23,25 @@
 <body>
 
 <ul id="menu">
-    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Income</a></li>
-    <li data-menuanchor="secondPage"><a href="#secondPage">Age</a></li>
-    <li data-menuanchor="3rdPage"><a href="#3rdPage">Education</a></li>
+    <li data-menuanchor="1stPage" class="active"><a href="#1stPage" title="Overview">1</a></li>
+    <li data-menuanchor="2ndPage"><a href="#2ndPage" title="Income">2</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage" title="Age">3</a></li>
+    <li data-menuanchor="4thPage"><a href="#4thPage" title="Education">4</a></li>
 </ul>
 
 <div id="fullpage">
     <div class="section " id="section0">
         <h1>Obesity in the United States 2018</h1>
-        <h2>Obesity(%) by Income</h2>
+    </br>
+        <p>Navigate by either scrolling up and down or clicking the buttons for each slide in the top-left corner.</p>
     </div>
     <div class="section " id="section1">
+        <h2>Obesity(%) by Income</h2>
+    </div>
+    <div class="section " id="section2">
         <h2>Obesity(%) by Age</h2>
     </div>
-    <div class="section" id="section2">
+    <div class="section" id="section3">
         <div class="intro">
             <h2>Obesity(%) by Education</h2>
         </div>
@@ -53,7 +58,7 @@ var margin = {top: 30, right: 30, bottom: 70, left: 60},
     height = 650 - margin.top - margin.bottom;
 
 ///////////////////////////////////////////////////////////////////////////// graph1
-var svg_graph1 = d3.select("#section0")
+var svg_graph1 = d3.select("#section1")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -62,7 +67,7 @@ var svg_graph1 = d3.select("#section0")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://samanake.github.io/obesity_2018_income.csv", function(data) {
+d3.csv("https://samanake.github.io/obesity_2018_income_simplified.csv", function(data) {
 
 // X axis
 var x = d3.scaleBand()
@@ -93,6 +98,7 @@ svg_graph1.selectAll("mybar")
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.Value); })
     .attr("fill", "#7f3131")
+    .attr("style","box-shadow: 0px 8px 15px rgb(0 0 0 / 35%);")
     .append("title")
         .text(function(d){
             return "Income " + d.Income + " : " + d.Value + "%";
@@ -102,7 +108,7 @@ svg_graph1.selectAll("mybar")
 
 
 //////////////////////////////////////////////////////////////////////////// graph2
-var svg_graph2 = d3.select("#section1")
+var svg_graph2 = d3.select("#section2")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -111,7 +117,7 @@ var svg_graph2 = d3.select("#section1")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://samanake.github.io/obesity_2018_age.csv", function(data) {
+d3.csv("https://samanake.github.io/obesity_2018_age_simplified.csv", function(data) {
 
 // X axis
 var x = d3.scaleBand()
@@ -150,7 +156,7 @@ svg_graph2.selectAll("mybar")
 })
     
 //////////////////////////////////////////////////////////////////////////// graph3
-var svg_graph3 = d3.select("#section2")
+var svg_graph3 = d3.select("#section3")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -159,7 +165,7 @@ var svg_graph3 = d3.select("#section2")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://samanake.github.io/obesity_2018_education.csv", function(data) {
+d3.csv("https://samanake.github.io/obesity_2018_education_simplified.csv", function(data) {
 
 // X axis
 var x = d3.scaleBand()
@@ -203,8 +209,8 @@ svg_graph3.selectAll("mybar")
 <script type="text/javascript" src="dist/fullpage.js"></script>
 <script type="text/javascript">
     var myFullpage = new fullpage('#fullpage', {
-        sectionsColor: ['#949494', '#949494', '#949494'],
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+        sectionsColor: ['rgb(193 193 193)', 'rgb(193 193 193)', 'rgb(193 193 193)','rgb(193 193 193)'],
+        anchors: ['1stPage', '2ndPage', '3rdPage', '4thPage'],
         menu: '#menu',
         lazyLoad: true
     });
