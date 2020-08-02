@@ -265,3 +265,8 @@ p{
 	color:black;
 	font-size:medium;
 }
+
+.select{
+	font-size:20px;
+	transform:translate(-50%,0%);
+}

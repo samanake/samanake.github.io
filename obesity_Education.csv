@@ -1,20 +1,4 @@
 ID,Education,Year,Value
-0,College graduate,2011,21.61538461538462
-1,College graduate,2012,22.076923076923077
-2,College graduate,2013,22.428301886792458
-3,College graduate,2014,23.21296296296296
-4,College graduate,2015,23.327777777777776
-5,College graduate,2016,23.987272727272735
-6,College graduate,2017,24.47777777777778
-7,College graduate,2018,25.99814814814815
-8,High school graduate,2011,29.790384615384614
-9,High school graduate,2012,30.013461538461545
-10,High school graduate,2013,30.69245283018868
-11,High school graduate,2014,31.19629629629629
-12,High school graduate,2015,31.750000000000004
-13,High school graduate,2016,32.092727272727274
-14,High school graduate,2017,33.15925925925925
-15,High school graduate,2018,33.29259259259259
 16,Less than high school,2011,31.613461538461543
 17,Less than high school,2012,32.411538461538456
 18,Less than high school,2013,33.04339622641509
@@ -23,6 +7,14 @@ ID,Education,Year,Value
 21,Less than high school,2016,34.09636363636364
 22,Less than high school,2017,35.1037037037037
 23,Less than high school,2018,34.44074074074075
+8,High school graduate,2011,29.790384615384614
+9,High school graduate,2012,30.013461538461545
+10,High school graduate,2013,30.69245283018868
+11,High school graduate,2014,31.19629629629629
+12,High school graduate,2015,31.750000000000004
+13,High school graduate,2016,32.092727272727274
+14,High school graduate,2017,33.15925925925925
+15,High school graduate,2018,33.29259259259259
 24,Some college or technical school,2011,28.861538461538455
 25,Some college or technical school,2012,29.182692307692314
 26,Some college or technical school,2013,30.028301886792452
@@ -31,3 +23,11 @@ ID,Education,Year,Value
 29,Some college or technical school,2016,31.367272727272724
 30,Some college or technical school,2017,32.388888888888886
 31,Some college or technical school,2018,33.29074074074075
+0,College graduate,2011,21.61538461538462
+1,College graduate,2012,22.076923076923077
+2,College graduate,2013,22.428301886792458
+3,College graduate,2014,23.21296296296296
+4,College graduate,2015,23.327777777777776
+5,College graduate,2016,23.987272727272735
+6,College graduate,2017,24.47777777777778
+7,College graduate,2018,25.99814814814815
