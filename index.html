@@ -299,7 +299,7 @@ function parseData3(selectValue){
   var svg_graph3 = d3.select("#section3")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", 100+ height + margin.top + margin.bottom)
+    .attr("height", 75+ height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
@@ -326,7 +326,7 @@ function parseData3(selectValue){
 
     svg_graph3.append("text")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate("+ (width/2) +","+(100+height-(padding-10))+")")
+    .attr("transform", "translate("+ (width/2) +","+(75+height-(padding-10))+")")
     .text("Education");
 
   // Add Y axis
